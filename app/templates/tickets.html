@@ -14,48 +14,28 @@
     <h1 class="text-primary">Trip FREE - Путешествуй свободно</h1>
     <div class="row">
         <div class="col pt-5">
-            {#            <form>#}
-            {#                <input name="search" class="form-control" placeholder="Поиск..." type="search"#}
-            {#                       value="{{search}}">#}
-            {#            </form>#}
+            <form>
+                <input name="search" class="form-control" placeholder="Поиск..." type="search"
+                       value="{{ search }}">
+            </form>
             <br>
             <br>
-                <div class="card-deck">
-                <div class="card">
-                    <img src="https://www.hyundai-avtomir.ru/upload/iblock/28b/28bcc2eded8a2046dde5b20f9f5465ea.jpg"
-                         class="card-img-top" alt="solaris">
-                    <div class="card-body">
-                        {% for item in result %}
-                        <h5 class="card-title">{{ item.name }}</h5>
-                        <p class="card-text">Комфортный и недорогой седан{{ item.price }}</p>
+            <div class="card-deck">
+                {% for item in result %}
+                    <div class="card">
+                        <img src="{{ item.image }}"
+                             class="card-img-top" alt="solaris">
+                        <div class="card-body">
+
+                            <h5 class="card-title">{{ item.name }}</h5>
+
+                            <p class="card-text">Цена за сутки {{ item.price }} руб.-</p>
+                        </div>
+                        <div class="card-footer">
+                            <a href="#" class="btn btn-primary">Забронировать</a>
+                        </div>
                     </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Забронировать</a>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-CTWVq8HGUSap9RfZmwzz4PNO71SBFdqjNLLp_yrcqr-rcw-nXg"
-                         class="card-img-top" alt="xtrail">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ item.name }}</h5>
-                        <p class="card-text">Проедет куда угодно. Подходит для большой компании.</p>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Забронировать</a>
-                    </div>
-                </div>
-                <div class="card">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRixgkHVyiFO8Ok4WW2PJ4M52ODO1KETC4Jfm2OufDDqbIhtbxB9Q"
-                     class="card-img-top" alt="s600">
-                <div class="card-body">
-                    <h5 class="card-title">{{ item.name }}</h5>
-                    {% endfor %}
-                    <p class="card-text">Комфорт на высшем уровне.</p>
-                </div>
-                <div class="card-footer">
-                <a href="#" class="btn btn-primary">Забронировать</a>
-            </div>
-            </div>
+                {% endfor %}
             </div>
         </div>
     </div>

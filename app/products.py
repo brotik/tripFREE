@@ -6,18 +6,20 @@ class CarRent:
 
 
 class Tours:
-    def __init__(self, name, price, comfort, days_qty):
+    def __init__(self, name, price, image, comfort, days_qty):
         self.name = name
         self.price = price
         self.days_qty = days_qty
         self.comfort = comfort
+        self.image = image
 
 
 class Tickets:
-    def __init__(self, name, price, date):
+    def __init__(self, name, price, image, date):
         self.name = name
         self.price = price
         self.date = date
+        self.image = image
 
 
 class ProductManager:
