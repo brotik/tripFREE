@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>TripFREE</title>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-primary">Trip FREE - Путешествуй свободно</h1>
+
+    <form>
+        <input name="search" class="form-control" placeholder="Поиск..." type="search"
+               value="{{search}}">
+    </form>
+
+    <br>
+    <div class="row">
+        <iframe src="https://bankiros.ru/informers/inf_russia_t1.html" scrolling="no" frameborder="0" width="23%"
+                height="20%" marginheight="2" marginwidth=""></iframe>
+        <div class="col pt-5">
+            <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+                <a href="{{ url_for('carrent') }}" type="button" class="btn btn-outline-primary">Аренда автомобилей</a>
+                <a href="{{ url_for('tours') }}" type="button" class="btn btn-outline-primary">Забронировать тур</a>
+                <a href="{{ url_for('tickets') }}" type="button" class="btn btn-outline-primary">Билеты на самолет</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p><img src="http://8150e502a00d512ce440-4f545a264b21ec0a641efaa20af32482.r86.cf4.rackcdn.com/d1024x300/i357.jpg"
+            alt="заставка вниз" width="100%"></p>
+</div>
+
+
+</body>
+</html>
