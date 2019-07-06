@@ -26,11 +26,6 @@ def start():
 
     @app.route('/')
     def index():
-        search = request.args.get('search')
-        if search:
-            items = product_manager.search_products(search)
-
-            return render_template('index.html', items=items)
         return render_template('index.html')
 
     @app.route('/carrent')
@@ -74,6 +69,10 @@ def start():
 
             return render_template('tickets.html', result=items)
         return render_template('tickets.html', result=result)
+
+    @app.route('/purchase')
+    def purchase():
+        return render_template('purchase.html')
 
     if os.getenv('APP_ENV') == 'PROD' and os.getenv('PORT'):
         waitress.serve(app, port=os.getenv('PORT'))
