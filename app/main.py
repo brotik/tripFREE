@@ -5,7 +5,6 @@ from app.products import ProductManager, CarRent, Tours, Tickets
 import smtplib
 
 
-
 def start():
     app = Flask(__name__)
 
