@@ -88,14 +88,14 @@ def start():
         prodname = request.form['prod1']
         emailname = request.form['email1']
 
-        TEXT = "Email: {}, PhoneNumber: {}: ProductName: {}".format(emailname, telephone, prodname)
-        BODY = '\r\n'.join(['To: %s' % to,
+        text = "Email: {}, PhoneNumber: {}: ProductName: {}".format(emailname, telephone, prodname)
+        body = '\r\n'.join(['To: %s' % to,
                             'From: %s' % gmail_sender,
                             'Subject: %s' % subject,
-                            '', TEXT])
+                            '', text])
 
         try:
-            server.sendmail(gmail_sender, [to], BODY)
+            server.sendmail(gmail_sender, [to], body)
         except:
             pass
         return render_template('purchase.html')
