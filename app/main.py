@@ -8,7 +8,7 @@ import smtplib
 def start():
     app = Flask(__name__)
 
-    to = 'pythontripfree1315@gmail.com'
+    to = 'brotik13@gmail.com'
     subject = 'Information from TripFREE'
 
     gmail_sender = 'pythontripfree1315@gmail.com'

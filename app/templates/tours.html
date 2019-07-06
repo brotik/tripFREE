@@ -34,7 +34,7 @@
                             <p class="card-text">Цена за 1 человека - {{ item.price }}</p>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary">Забронировать</a>
+                            <a href="{{ url_for('purchase') }}" class="btn btn-primary">Забронировать</a>
                         </div>
                     </div>
                 {% endfor %}
