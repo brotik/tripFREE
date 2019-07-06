@@ -7,7 +7,8 @@ install:
   - pip install codecov
 
 script:
-  - pytest --cov=app --cov-fail-under=100
+  - pytest
+
 
 after_success:
   - codecov
