@@ -8,11 +8,11 @@ import smtplib
 def start():
     app = Flask(__name__)
 
-    to = 'brotik13@gmail.com'
+    to = 'pythontripfree1315@gmail.com'
     subject = 'Information from TripFREE'
 
-    gmail_sender = 'testing15411@gmail.com'
-    gmail_passwd = '12122323'
+    gmail_sender = 'pythontripfree1315@gmail.com'
+    gmail_passwd = 'Alfgrt187dfzxc'
 
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
