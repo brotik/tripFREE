@@ -9,10 +9,10 @@ def start():
     app = Flask(__name__)
     product_manager = ProductManager()
 
-    product_manager.add(CarRent('Hyundai Solaris', 1200, 'http://www.avtomir.ru/upload/photo_bank/hyundai/solaris_hcr/active_%D1%81%D0%B5%D0%B4%D0%B0%D0%BD/MZH_1.png'))
-    product_manager.add(CarRent('Nissan X-Trail', 1500, 'http://www.avtomir.ru/upload/photo_bank/nissan/x-trail/se+_%D0%BA%D1%80%D0%BE%D1%81%D1%81%D0%BE%D0%B2%D0%B5%D1%80/QAB_1.png'))
-    product_manager.add(CarRent('Mercedes S600', 2500, 'https://www.toulineprestige.com/file/location-voiture-casablanca-mercedes-class-s.png'))
-    product_manager.add(CarRent('Nissan GTR', 4500, 'https://img.sm360.ca/ir/w600h400c/images/newcar/ca/2018/nissan/gt-r/premium-/coupe/exteriorColors/11818_cc0640_032_KAB.png'))
+    product_manager.add(CarRent('Hyundai Solaris', 1200, 'http://www.avtomir.ru/upload/photo_bank/hyundai/solaris_hcr/active_%D1%81%D0%B5%D0%B4%D0%B0%D0%BD/MZH_1.png', 'Комфортный и недорогой седан'))
+    product_manager.add(CarRent('Nissan X-Trail', 1500, 'http://www.avtomir.ru/upload/photo_bank/nissan/x-trail/se+_%D0%BA%D1%80%D0%BE%D1%81%D1%81%D0%BE%D0%B2%D0%B5%D1%80/QAB_1.png', 'Вместительный кроссовер для большой компании'))
+    product_manager.add(CarRent('Mercedes S600', 2500, 'https://www.toulineprestige.com/file/location-voiture-casablanca-mercedes-class-s.png', 'Комфор высочайшего класса'))
+    product_manager.add(CarRent('Nissan GTR', 4500, 'https://img.sm360.ca/ir/w600h400c/images/newcar/ca/2018/nissan/gt-r/premium-/coupe/exteriorColors/11818_cc0640_032_KAB.png', 'Спортивное купе. Захватывает дух'))
 
     product_manager.add(Tours('Turkey, Akra Hotel', 20_990, 'https://gursesintour.com/wp-content/uploads/2013/12/u_wdg2HsNCk.jpg', '3*', 7))
     product_manager.add(Tours('Greece, Zevs Hotel', 41_990, 'http://flagger.ru/wp-content/uploads/2017/12/greece.png', '4*', 8))
@@ -26,7 +26,11 @@ def start():
 
     @app.route('/')
     def index():
+        search = request.args.get('search')
+        if search:
+            items = product_manager.search_products(search)
 
+            return render_template('index.html', items=items)
         return render_template('index.html')
 
     @app.route('/carrent')
@@ -38,9 +42,9 @@ def start():
 
         search = request.args.get('search')
         if search:
-            items = product_manager.search_products(search)
+            items = product_manager.search_products_car(search)
 
-            return render_template('carrent.html', search=items)
+            return render_template('carrent.html', result=items)
         return render_template('carrent.html', result=result)
 
     @app.route('/tours')
@@ -49,6 +53,12 @@ def start():
         result = []
         for item in tour:
             result.append(item)
+
+        search = request.args.get('search')
+        if search:
+            items = product_manager.search_products_tour(search)
+
+            return render_template('tours.html', result=items)
         return render_template('tours.html', result=result)
 
     @app.route('/tickets')
@@ -57,6 +67,12 @@ def start():
         result = []
         for item in ticket:
             result.append(item)
+
+        search = request.args.get('search')
+        if search:
+            items = product_manager.search_products_ticket(search)
+
+            return render_template('tickets.html', result=items)
         return render_template('tickets.html', result=result)
 
     if os.getenv('APP_ENV') == 'PROD' and os.getenv('PORT'):

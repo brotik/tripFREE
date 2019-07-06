@@ -1,8 +1,9 @@
 class CarRent:
-    def __init__(self, name, price, image):
+    def __init__(self, name, price, image, description):
         self.name = name
         self.price = price
         self.image = image
+        self.description = description
 
 
 class Tours:
@@ -38,21 +39,29 @@ class ProductManager:
     def tickets(self):
         return list(filter(lambda tickets: isinstance(tickets, Tickets), self.items))
 
-    def search_products(self, search):
+    def search_products_car(self, search):
         search_lowercase = search.strip().lower()
         result = []
-        if search_lowercase:
-            result.append(self)
+        cars = self.cars()
+        for item in cars:
+            if search_lowercase in item.name.lower():
+                result.append(item)
         return result
 
+    def search_products_tour(self, search):
+        search_lowercase = search.strip().lower()
+        result = []
+        tours = self.tours()
+        for item in tours:
+            if search_lowercase in item.name.lower():
+                result.append(item)
+        return result
 
-
-        # return list(filter(lambda o: name.lower() in o.name.lower(), self.items))
-#
-# def search_products(container, search):
-#     search_lowercase = search.strip().lower()
-#     result = []
-#     for item in container:
-#         if search_lowercase in item.name.lower():
-#             result.append(item)
-
+    def search_products_ticket(self, search):
+        search_lowercase = search.strip().lower()
+        result = []
+        tickets = self.tickets()
+        for item in tickets:
+            if search_lowercase in item.name.lower():
+                result.append(item)
+        return result
