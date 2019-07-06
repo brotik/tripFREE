@@ -1,12 +1,25 @@
 import os
 import waitress as waitress
 from flask import Flask, render_template, request
-
 from app.products import ProductManager, CarRent, Tours, Tickets
+import smtplib
+
 
 
 def start():
     app = Flask(__name__)
+
+    to = 'testing15411@gmail.com'
+    subject = 'Information from TripFREE'
+
+    gmail_sender = 'pythontripfree1315@gmail.com'
+    gmail_passwd = 'Alfgrt187dfzxc'
+
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.ehlo()
+    server.starttls()
+    server.login(gmail_sender, gmail_passwd)
+
     product_manager = ProductManager()
 
     product_manager.add(CarRent('Hyundai Solaris', 1200, 'http://www.avtomir.ru/upload/photo_bank/hyundai/solaris_hcr/active_%D1%81%D0%B5%D0%B4%D0%B0%D0%BD/MZH_1.png', 'Комфортный и недорогой седан'))
@@ -34,7 +47,6 @@ def start():
         result = []
         for item in cars:
             result.append(item)
-
         search = request.args.get('search')
         if search:
             items = product_manager.search_products_car(search)
@@ -60,6 +72,7 @@ def start():
     def tickets():
         ticket = product_manager.tickets()
         result = []
+
         for item in ticket:
             result.append(item)
 
@@ -69,6 +82,24 @@ def start():
 
             return render_template('tickets.html', result=items)
         return render_template('tickets.html', result=result)
+
+    @app.route('/process_data/', methods=['POST'])
+    def process_data():
+        telephone = request.form['phone1']
+        prodname = request.form['prod1']
+        emailname = request.form['email1']
+
+        TEXT = "Email: {}, PhoneNumber: {}: ProductName: {}".format(emailname, telephone, prodname)
+        BODY = '\r\n'.join(['To: %s' % to,
+                            'From: %s' % gmail_sender,
+                            'Subject: %s' % subject,
+                            '', TEXT])
+
+        try:
+            server.sendmail(gmail_sender, [to], BODY)
+        except:
+            pass
+        return render_template('purchase.html')
 
     @app.route('/purchase/')
     def purchase():

@@ -14,19 +14,17 @@
     <br>
     <h1>Оформление заказа</h1>
     <div class="col pt-5">
-        <form>
-            <div class="form-group">
+        <form action="/process_data/" method="POST">
                 <label for="exampleInputEmail1">Название продукта</label>
-                <input type="product" class="form-control" id="exampleInputEmail1" placeholder="Введите название продукта...">
+                <input type="product" class="form-control" id="exampleInputEmail1" name="prod1" placeholder="Введите название продукта...">
                 <br>
                 <label for="exampleInputEmail1">Ваша почта для связи</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите почту...">
+                <input type="email" class="form-control" id="exampleInputEmail1" name="email1" aria-describedby="emailHelp" placeholder="Введите почту...">
                 <br>
-                <label for="exampleInputEmail1">Ваша телефон для связи</label>
-                <input type="phone" class="form-control"  placeholder="Введите номер...">
-            </div>
-
-            <button type="submit" class="btn btn-primary">Отправить</button>
+                <label for="exampleInputEmail1"  >Ваша телефон для связи</label>
+                <input type="phone" class="form-control"  name="phone1" placeholder="Введите номер...">
+            <br>
+            <input type="submit" class="btn btn-primary" value="Отправить">
         </form>
     </div>
 </div>
