@@ -70,7 +70,7 @@ def start():
             return render_template('tickets.html', result=items)
         return render_template('tickets.html', result=result)
 
-    @app.route('/purchase')
+    @app.route('/purchase/')
     def purchase():
         return render_template('purchase.html')
 

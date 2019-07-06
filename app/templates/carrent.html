@@ -33,7 +33,7 @@
                             <p class="card-text">{{ item.description }}</p>
                         </div>
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary">Забронировать</a>
+                            <a href="{{ url_for('purchase') }}" class="btn btn-primary">Забронировать</a>
                         </div>
                     </div>
                 {% endfor %}
