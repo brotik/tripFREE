@@ -88,7 +88,7 @@ def start():
         prodname = request.form['prod1']
         emailname = request.form['email1']
 
-        text = "Email: {}, PhoneNumber: {}: ProductName: {}".format(emailname, telephone, prodname)
+        text = "ProductName: {}, Email: {}, PhoneNumber: {}".format(emailname, telephone, prodname)
         body = '\r\n'.join(['To: %s' % to,
                             'From: %s' % gmail_sender,
                             'Subject: %s' % subject,
