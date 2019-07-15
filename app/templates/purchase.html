@@ -16,12 +16,12 @@
     <div class="col pt-5">
         <form action="/process_data/" method="POST">
                 <label for="exampleInputEmail1">Название продукта</label>
-                <input type="product" class="form-control" id="exampleInputEmail1" name="prod1" placeholder="Введите название продукта...">
+                <input type="product" class="form-control" id="exampleInputEmail1" name="prod1" value="{{ item_id }}">
                 <br>
                 <label for="exampleInputEmail1">Ваша почта для связи</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" name="email1" aria-describedby="emailHelp" placeholder="Введите почту...">
                 <br>
-                <label for="exampleInputEmail1"  >Ваша телефон для связи</label>
+                <label for="exampleInputEmail1"  >Ваш телефон для связи</label>
                 <input type="phone" class="form-control"  name="phone1" placeholder="Введите номер...">
             <br>
             <input type="submit" class="btn btn-primary" value="Отправить">

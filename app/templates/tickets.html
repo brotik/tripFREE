@@ -33,7 +33,12 @@
                             <p class="card-text">Цена билета - {{ item.price }} руб.-</p>
                         </div>
                         <div class="card-footer">
-                            <a href="{{ url_for('purchase') }}" class="btn btn-primary">Забронировать</a>
+                            <a href="/purchase/ticket/1" class="btn btn-primary">Забронировать</a>
+                            <script>
+                                var data = document.getElementsByClassName('btn btn-primary')
+                                for (var i = 0; i < data.length; i++)
+                                data[i].href = "/purchase/ticket/"+i.toString();
+                            </script>
                         </div>
                     </div>
                 {% endfor %}

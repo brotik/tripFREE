@@ -100,9 +100,20 @@ def start():
             pass
         return render_template('purchase.html')
 
-    @app.route('/purchase/')
-    def purchase():
-        return render_template('purchase.html')
+    @app.route('/purchase/car/<id>')
+    def purchase_car(id):
+        select_car = product_manager.cars()[int(id)].name
+        return render_template('purchase.html', item_id=select_car)
+
+    @app.route('/purchase/tour/<id>')
+    def purchase_tour(id):
+        select_tour = product_manager.tours()[int(id)].name
+        return render_template('purchase.html', item_id=select_tour)
+
+    @app.route('/purchase/ticket/<id>')
+    def purchase_ticket(id):
+        select_ticket = product_manager.tickets()[int(id)].name
+        return render_template('purchase.html', item_id=select_ticket)
 
     if os.getenv('APP_ENV') == 'PROD' and os.getenv('PORT'):
         waitress.serve(app, port=os.getenv('PORT'))
